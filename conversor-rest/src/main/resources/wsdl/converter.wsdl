@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:plink="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdlsoap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap11enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap11env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12env="http://www.w3.org/2003/05/soap-envelope" xmlns:soap12enc="http://www.w3.org/2003/05/soap-encoding" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="spyne.converter.soap" targetNamespace="spyne.converter.soap" name="Application">
+    <wsdl:types>
+        <xs:schema targetNamespace="spyne.converter.soap" elementFormDefault="qualified">
+            <xs:complexType name="celsius_to_fahrenheit">
+                <xs:sequence>
+                    <xs:element name="celsius" type="xs:decimal" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="celsius_to_fahrenheitResponse">
+                <xs:sequence>
+                    <xs:element name="celsius_to_fahrenheitResult" type="xs:decimal" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="fahrenheit_to_celsius">
+                <xs:sequence>
+                    <xs:element name="fahrenheit" type="xs:decimal" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="fahrenheit_to_celsiusResponse">
+                <xs:sequence>
+                    <xs:element name="fahrenheit_to_celsiusResult" type="xs:decimal" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="km_to_mi">
+                <xs:sequence>
+                    <xs:element name="km" type="xs:decimal" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="km_to_miResponse">
+                <xs:sequence>
+                    <xs:element name="km_to_miResult" type="xs:decimal" minOccurs="0" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="celsius_to_fahrenheit" type="tns:celsius_to_fahrenheit"/>
+            <xs:element name="celsius_to_fahrenheitResponse" type="tns:celsius_to_fahrenheitResponse"/>
+            <xs:element name="fahrenheit_to_celsius" type="tns:fahrenheit_to_celsius"/>
+            <xs:element name="fahrenheit_to_celsiusResponse" type="tns:fahrenheit_to_celsiusResponse"/>
+            <xs:element name="km_to_mi" type="tns:km_to_mi"/>
+            <xs:element name="km_to_miResponse" type="tns:km_to_miResponse"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="celsius_to_fahrenheit">
+        <wsdl:part name="celsius_to_fahrenheit" element="tns:celsius_to_fahrenheit"/>
+    </wsdl:message>
+    <wsdl:message name="celsius_to_fahrenheitResponse">
+        <wsdl:part name="celsius_to_fahrenheitResponse" element="tns:celsius_to_fahrenheitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="fahrenheit_to_celsius">
+        <wsdl:part name="fahrenheit_to_celsius" element="tns:fahrenheit_to_celsius"/>
+    </wsdl:message>
+    <wsdl:message name="fahrenheit_to_celsiusResponse">
+        <wsdl:part name="fahrenheit_to_celsiusResponse" element="tns:fahrenheit_to_celsiusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="km_to_mi">
+        <wsdl:part name="km_to_mi" element="tns:km_to_mi"/>
+    </wsdl:message>
+    <wsdl:message name="km_to_miResponse">
+        <wsdl:part name="km_to_miResponse" element="tns:km_to_miResponse"/>
+    </wsdl:message>
+    <wsdl:service name="ConverterService">
+        <wsdl:port name="Application" binding="tns:Application">
+            <wsdlsoap11:address location="http://localhost:8000/"/>
+        </wsdl:port>
+    </wsdl:service>
+    <wsdl:portType name="Application">
+        <wsdl:operation name="celsius_to_fahrenheit" parameterOrder="celsius_to_fahrenheit">
+            <wsdl:input name="celsius_to_fahrenheit" message="tns:celsius_to_fahrenheit"/>
+            <wsdl:output name="celsius_to_fahrenheitResponse" message="tns:celsius_to_fahrenheitResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="fahrenheit_to_celsius" parameterOrder="fahrenheit_to_celsius">
+            <wsdl:input name="fahrenheit_to_celsius" message="tns:fahrenheit_to_celsius"/>
+            <wsdl:output name="fahrenheit_to_celsiusResponse" message="tns:fahrenheit_to_celsiusResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="km_to_mi" parameterOrder="km_to_mi">
+            <wsdl:input name="km_to_mi" message="tns:km_to_mi"/>
+            <wsdl:output name="km_to_miResponse" message="tns:km_to_miResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="Application" type="tns:Application">
+        <wsdlsoap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="celsius_to_fahrenheit">
+            <wsdlsoap11:operation soapAction="celsius_to_fahrenheit" style="document"/>
+            <wsdl:input name="celsius_to_fahrenheit">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="celsius_to_fahrenheitResponse">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="fahrenheit_to_celsius">
+            <wsdlsoap11:operation soapAction="fahrenheit_to_celsius" style="document"/>
+            <wsdl:input name="fahrenheit_to_celsius">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="fahrenheit_to_celsiusResponse">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="km_to_mi">
+            <wsdlsoap11:operation soapAction="km_to_mi" style="document"/>
+            <wsdl:input name="km_to_mi">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="km_to_miResponse">
+                <wsdlsoap11:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+</wsdl:definitions>

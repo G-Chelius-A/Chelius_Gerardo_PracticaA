@@ -1,0 +1,15 @@
+# Entornos y archivos temporales de Python
+**/venv/
+**/__pycache__/
+*.py[cod]
+
+# Artefactos de Maven/Java
+**/target/
+*.class
+
+# Archivos de IDE y sistema operativo
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
