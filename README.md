@@ -24,7 +24,7 @@ En una terminal, desde la raíz del proyecto:
 ```powershell
 cd conversor-soap
 python -m venv venv
-.\venv\Scripts\Activate.ps1
+.\venv\Scripts\Activate
 python -m pip install spyne lxml
 python Server.py
 ```
